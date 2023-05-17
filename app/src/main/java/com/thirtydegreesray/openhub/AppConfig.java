@@ -62,7 +62,8 @@ public class AppConfig {
     public final static List<String> COMMON_PAGE_URL_LIST = Arrays.asList(
             "https://github.com/trending"
     );
-
+    // replace this part with 
+/* 
     public final static boolean isCommonPageUrl(String url){
         if(StringUtils.isBlank(url)){
             return false;
@@ -75,4 +76,18 @@ public class AppConfig {
         return false;
     }
 
+} 
+*/ 
+    // this new part to fix the trending repositories issue
+    public final static boolean isCommonPageUrl(String url) {
+    if (StringUtils.isBlank(url)) {
+        return false;
+    }
+
+    for (String commonUrl : COMMON_PAGE_URL_LIST) {
+        if (url.startsWith(commonUrl)) {
+            return true;
+        }
+    }
+    return false;
 }
